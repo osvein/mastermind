@@ -27,6 +27,7 @@
 
 #include	"mastermind.h"
 
+char	*argv0;
 Code	secret;
 
 int
