@@ -53,11 +53,9 @@ fscancode(Digit code[CODELEN], FILE *stream)
 {
 	Digit	*end;
 
-	for (end = code + CODELEN; code < end; ++code) {
-		if (fscanf(stream, "%u", code) < 1) {
+	for (end = code + CODELEN; code < end; ++code)
+		if (fscanf(stream, "%u", code) < 1 || *code >= CODERADIX)
 			exit(EXIT_FAILURE);
-		}
-	}
 }
 
 void
@@ -65,10 +63,9 @@ fprintcode(Digit code[CODELEN], FILE *stream)
 {
 	Digit	*end;
 
-	for (end = code + CODELEN; code < end; ++code) {
+	for (end = code + CODELEN; code < end; ++code)
 		if (fprintf(stream, "%u\t", *code) < 0)
 			exit(EXIT_FAILURE);
-	}
 	if (putc('\n', stream) == EOF)
 		exit(EXIT_FAILURE);
 }
@@ -76,15 +73,13 @@ fprintcode(Digit code[CODELEN], FILE *stream)
 void
 fscanscore(Score *score, FILE *stream)
 {
-	if (fscanf(stream, "%u%u", &score->b, &score->w) < 2) {
+	if (fscanf(stream, "%u%u", &score->b, &score->w) < 2)
 		exit(EXIT_FAILURE);
-	}
 }
 
 void
 fprintscore(Score *score, FILE *stream)
 {
-	if (fprintf(stream, "%u\t%u\n", score->b, score->w) < 0) {
+	if (fprintf(stream, "%u\t%u\n", score->b, score->w) < 0)
 		exit(EXIT_FAILURE);
-	}
 }
