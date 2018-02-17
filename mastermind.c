@@ -21,6 +21,7 @@
  */
 
 #include	<stdio.h>
+#include	<stdlib.h>
 #include	<string.h>
 
 #include	"mastermind.h"
@@ -34,15 +35,56 @@ eval(Code a, Code b)
 	memset(afreq, 0, CODERADIX * sizeof(unsigned));
 	memset(bfreq, 0, CODERADIX * sizeof(unsigned));
 
-	for (i = CODELEN, score.b = 0; i; --i) {
+	for (i = score.b = 0; i < CODERADIX; ++i) {
 		++afreq[a[i]];
 		++bfreq[b[i]];
 		if (a[i] == b[i])
 			++score.b;
 	}
 
-	for (i = CODERADIX, score.w = -score.b; i; --i)
+	for (i = 0, score.w = -score.b; i < CODERADIX; ++i)
 		score.w += (afreq[i] < bfreq[i]) ? afreq[i] : bfreq[i];
 
 	return score;
+}
+
+void
+fscancode(Code code, FILE *stream)
+{
+	unsigned	*end;
+
+	for (end = code + CODELEN; code < end; ++code) {
+		if (fscanf(stream, "%u", code) < 1) {
+			exit(EXIT_FAILURE);
+		}
+	}
+}
+
+void
+fprintcode(Code code, FILE *stream)
+{
+	unsigned	*end;
+
+	for (end = code + CODELEN; code < end; ++code) {
+		if (fprintf(stream, "%u\t", *code) < 0)
+			exit(EXIT_FAILURE);
+	}
+	if (putc('\n', stream) == EOF)
+		exit(EXIT_FAILURE);
+}
+
+void
+fscanscore(Score *score, FILE *stream)
+{
+	if (fscanf(stream, "%u%u", &score->b, &score->w) < 2) {
+		exit(EXIT_FAILURE);
+	}
+}
+
+void
+fprintscore(Score *score, FILE *stream)
+{
+	if (fprintf(stream, "%u\t%u\n", score->b, score->w) < 0) {
+		exit(EXIT_FAILURE);
+	}
 }

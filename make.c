@@ -33,19 +33,24 @@ Code	secret;
 int
 main(int argc, char **argv)
 {
-	unsigned	i;
+	unsigned	*i;
 	Code	code;
 	Score	score;
 
 	argv0 = *argv;
 	srand(time(NULL));
-	for (i = CODELEN; i; --i)
-		secret[i] = rand() % CODERADIX;
+	for (i = secret; i < secret + CODERADIX; ++i)
+		*i = rand() % CODERADIX;
+	fprintcode(secret, stderr);
 
 	do {
-		scancode(code);
+		fputs("guess:\t", stdout);
+		if (fflush(stdout))
+			exit(EXIT_FAILURE);
+		fscancode(code, stdin);
 		score = eval(code, secret);
-		printscore(score);
+		fputs("score:\t", stdout);
+		fprintscore(&score, stdout);
 	} while (score.b < CODELEN);
 
 	return 0;
