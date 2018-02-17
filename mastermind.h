@@ -24,7 +24,8 @@
 #define	CODELEN	4
 #define	CODEPERMC	1296	/* pow(CODERADIX, CODELEN) */
 
-typedef	unsigned	Code[CODELEN];
+typedef	unsigned	Digit;
+typedef	Digit	Code[CODELEN];
 typedef	struct Score	Score;
 
 struct Score {

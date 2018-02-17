@@ -33,7 +33,7 @@ Code	secret;
 int
 main(int argc, char **argv)
 {
-	unsigned	*i;
+	Digit	*i;
 	Code	code;
 	Score	score;
 

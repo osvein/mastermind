@@ -51,7 +51,7 @@ eval(Code a, Code b)
 void
 fscancode(Code code, FILE *stream)
 {
-	unsigned	*end;
+	Digit	*end;
 
 	for (end = code + CODELEN; code < end; ++code) {
 		if (fscanf(stream, "%u", code) < 1) {
@@ -63,7 +63,7 @@ fscancode(Code code, FILE *stream)
 void
 fprintcode(Code code, FILE *stream)
 {
-	unsigned	*end;
+	Digit	*end;
 
 	for (end = code + CODELEN; code < end; ++code) {
 		if (fprintf(stream, "%u\t", *code) < 0)
