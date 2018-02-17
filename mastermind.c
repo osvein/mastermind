@@ -27,13 +27,13 @@
 #include	"mastermind.h"
 
 Score
-eval(Code a, Code b)
+eval(Digit a[CODELEN], Digit b[CODELEN])
 {
 	unsigned	i, afreq[CODERADIX], bfreq[CODERADIX];
 	Score	score;
 
-	memset(afreq, 0, CODERADIX * sizeof(unsigned));
-	memset(bfreq, 0, CODERADIX * sizeof(unsigned));
+	memset(afreq, 0, sizeof(afreq));
+	memset(bfreq, 0, sizeof(bfreq));
 
 	for (i = score.b = 0; i < CODERADIX; ++i) {
 		++afreq[a[i]];
@@ -49,7 +49,7 @@ eval(Code a, Code b)
 }
 
 void
-fscancode(Code code, FILE *stream)
+fscancode(Digit code[CODELEN], FILE *stream)
 {
 	Digit	*end;
 
@@ -61,7 +61,7 @@ fscancode(Code code, FILE *stream)
 }
 
 void
-fprintcode(Code code, FILE *stream)
+fprintcode(Digit code[CODELEN], FILE *stream)
 {
 	Digit	*end;
 

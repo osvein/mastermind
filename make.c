@@ -28,13 +28,13 @@
 #include	"mastermind.h"
 
 char	*argv0;
-Code	secret;
+Digit	secret[CODELEN];
 
 int
 main(int argc, char **argv)
 {
 	Digit	*i;
-	Code	code;
+	Digit	code[CODELEN];
 	Score	score;
 
 	argv0 = *argv;

@@ -25,7 +25,6 @@
 #define	CODEPERMC	1296	/* pow(CODERADIX, CODELEN) */
 
 typedef	unsigned	Digit;
-typedef	Digit	Code[CODELEN];
 typedef	struct Score	Score;
 
 struct Score {
@@ -34,8 +33,8 @@ struct Score {
 
 extern char	*argv0;
 
-Score	eval(Code, Code);
-void	fscancode(Code, FILE*);
-void	fprintcode(Code, FILE*);
+Score	eval(Digit[CODELEN], Digit[CODELEN]);
+void	fscancode(Digit[CODELEN], FILE*);
+void	fprintcode(Digit[CODELEN], FILE*);
 void	fscanscore(Score*, FILE*);
 void	fprintscore(Score*, FILE*);
