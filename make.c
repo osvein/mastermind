@@ -26,6 +26,7 @@
 #include	<time.h>
 
 #include	"mastermind.h"
+#include	"io.h"
 
 char	*argv0;
 Digit	secret[CODELEN];

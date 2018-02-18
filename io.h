@@ -20,17 +20,7 @@
  * SOFTWARE.
  */
 
-#define	CODERADIX	6
-#define	CODELEN	4
-#define	CODEPERMC	1296	/* pow(CODERADIX, CODELEN) */
-
-typedef	unsigned	Digit;
-typedef	struct Score	Score;
-
-struct Score {
-	unsigned	b, w;
-};
-
-extern char	*argv0;
-
-Score	eval(Digit[CODELEN], Digit[CODELEN]);
+void	fscancode(Digit[CODELEN], FILE*);
+void	fprintcode(Digit[CODELEN], FILE*);
+void	fscanscore(Score*, FILE*);
+void	fprintscore(Score*, FILE*);
