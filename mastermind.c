@@ -35,7 +35,7 @@ eval(Digit a[CODELEN], Digit b[CODELEN])
 	memset(afreq, 0, sizeof(afreq));
 	memset(bfreq, 0, sizeof(bfreq));
 
-	for (i = score.b = 0; i < CODERADIX; ++i) {
+	for (i = score.b = 0; i < CODELEN; ++i) {
 		++afreq[a[i]];
 		++bfreq[b[i]];
 		if (a[i] == b[i])
