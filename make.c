@@ -28,17 +28,15 @@
 #include	"mastermind.h"
 #include	"io.h"
 
-char	*argv0;
 Digit	secret[CODELEN];
 
 int
-main(int argc, char **argv)
+main(void)
 {
 	Digit	*i;
 	Digit	code[CODELEN];
 	Score	score;
 
-	argv0 = *argv;
 	srand(time(NULL));
 	for (i = secret; i < secret + CODERADIX; ++i)
 		*i = rand() % CODERADIX;

@@ -31,6 +31,4 @@ struct Score {
 	unsigned	b, w;
 };
 
-extern char	*argv0;
-
 Score	eval(Digit[CODELEN], Digit[CODELEN]);
