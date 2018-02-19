@@ -108,7 +108,6 @@ main(void)
 				maxval = val;
 			}
 		}
-		fprintf(stderr, ":%f\n", maxval);
 		fprintcode(max->code, stdout);
 		fscanscore(&score, stdin);
 	} while (score.b < CODELEN && (updatepool(max->code, score), 1));
