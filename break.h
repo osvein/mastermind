@@ -20,7 +20,7 @@
  * SOFTWARE.
  */
 
-typedef	double	Value;
+typedef	unsigned	Value;
 
 unsigned	countelims(Digit[CODELEN], Score);
 Value	calcvalue(Digit[CODELEN]);
