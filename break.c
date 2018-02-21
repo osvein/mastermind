@@ -108,7 +108,12 @@ main(void)
 				maxval = val;
 			}
 		}
+		fputs("guess:\t", stderr);
+		fflush(stderr);
 		fprintcode(max->code, stdout);
+		fflush(stdout);
+		fputs("score:\t", stderr);
+		fflush(stderr);
 		fscanscore(&score, stdin);
 	} while (score.b < CODELEN && (updatepool(max->code, score), 1));
 }

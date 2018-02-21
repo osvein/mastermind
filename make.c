@@ -40,16 +40,16 @@ main(void)
 	srand(time(NULL));
 	for (i = secret; i < secret + CODERADIX; ++i)
 		*i = rand() % CODERADIX;
-	fprintcode(secret, stderr);
 
 	do {
-		fputs("guess:\t", stdout);
-		if (fflush(stdout))
-			exit(EXIT_FAILURE);
+		fputs("guess:\t", stderr);
+		fflush(stderr);
 		fscancode(code, stdin);
 		score = eval(code, secret);
-		fputs("score:\t", stdout);
+		fputs("score:\t", stderr);
+		fflush(stderr);
 		fprintscore(&score, stdout);
+		fflush(stdout);
 	} while (score.b < CODELEN);
 
 	return 0;
